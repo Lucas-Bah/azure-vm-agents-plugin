@@ -6,20 +6,20 @@
     </f:block>
     <f:section title="${%Azure_Profile_Configuration}">
         <f:entry title="${%Cloud_Name}" field="cloudName"
-                 help="/plugin/azure-vm-agents/help-cloudName.html">
+                 help="/plugin/azure-vm-agents-with-spot-instance/help-cloudName.html">
             <f:textbox/>
         </f:entry>
         <f:entry title="${%Azure_Credentials}" field="azureCredentialsId"
-                 help="/plugin/azure-vm-agents/help-azureCredentials.html">
+                 help="/plugin/azure-vm-agents-with-spot-instance/help-azureCredentials.html">
             <c:select expressionAllowed="false"/>
         </f:entry>
         <f:entry title="${%Max_Virtual_Machines_Limit}" field="maxVirtualMachinesLimit"
-                 help="/plugin/azure-vm-agents/help-maxVirtualMachinesLimit.html">
+                 help="/plugin/azure-vm-agents-with-spot-instance/help-maxVirtualMachinesLimit.html">
             <f:textbox default="${descriptor.getDefaultMaxVMLimit()}"/>
         </f:entry>
 
         <f:entry title="${%Deployment_Timeout}" field="deploymentTimeout"
-                 help="/plugin/azure-vm-agents/help-deploymentTimeout.html">
+                 help="/plugin/azure-vm-agents-with-spot-instance/help-deploymentTimeout.html">
             <f:textbox default="${descriptor.getDefaultDeploymentTimeout()}"/>
         </f:entry>
 
@@ -35,13 +35,13 @@
 
         <f:entry title="${%Resource_Group_Name}">
             <ui:radioBlock name="resourceGroupReferenceType" value="new" title="${%Resource_Group_Create_New}" checked="${instance == null || instance.isResourceGroupReferenceTypeEquals('new')}" inline="true">
-                <f:entry field="newResourceGroupName" help="/plugin/azure-vm-agents/help-resourceGroupName.html">
+                <f:entry field="newResourceGroupName" help="/plugin/azure-vm-agents-with-spot-instance/help-resourceGroupName.html">
                     <f:textbox/>
                 </f:entry>
             </ui:radioBlock>
 
             <ui:radioBlock name="resourceGroupReferenceType" value="existing" title="${%Resource_Group_Use_Exist}" checked="${instance.isResourceGroupReferenceTypeEquals('existing')}" inline="true">
-                <f:entry field="existingResourceGroupName" help="/plugin/azure-vm-agents/help-resourceGroupName.html">
+                <f:entry field="existingResourceGroupName" help="/plugin/azure-vm-agents-with-spot-instance/help-resourceGroupName.html">
                     <f:select/>
                 </f:entry>
             </ui:radioBlock>

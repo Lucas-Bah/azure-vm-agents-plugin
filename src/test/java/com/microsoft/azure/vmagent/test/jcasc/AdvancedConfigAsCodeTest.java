@@ -89,6 +89,8 @@ public class AdvancedConfigAsCodeTest {
         assertThat(template.isTemplateDisabled(), is(false));
         assertThat(template.getTemplateName(), is("azure"));
 
+        assertThat(template.isSpotInstance(), is(false));
+
         assertThat(template.getUsageMode(), is("Use this node as much as possible"));
         assertThat(template.getUsePrivateIP(), is(true));
 

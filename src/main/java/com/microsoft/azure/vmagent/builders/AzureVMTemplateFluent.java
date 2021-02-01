@@ -31,6 +31,8 @@ public class AzureVMTemplateFluent<T extends AzureVMTemplateFluent<T>> {
 
     private int osDiskSize;
 
+    private boolean spotInstance;
+
     private String newStorageAccountName;
 
     private String existingStorageAccountName;
@@ -56,6 +58,7 @@ public class AzureVMTemplateFluent<T extends AzureVMTemplateFluent<T>> {
         storageAccountNameReferenceType = "new";
         diskType = Constants.DISK_MANAGED;
         osDiskSize = 0;
+        spotInstance = false;
         retentionStrategy = new AzureVMCloudRetensionStrategy(Constants.DEFAULT_IDLE_RETENTION_TIME);
         shutdownOnIdle = false;
         usageMode = "Use this node as much as possible";
@@ -130,6 +133,11 @@ public class AzureVMTemplateFluent<T extends AzureVMTemplateFluent<T>> {
 
     public T withOsDiskSize(int osDiskSize) {
         this.osDiskSize = osDiskSize;
+        return (T) this;
+    }
+
+    public T withSpotInstance(boolean isSpotInstance) {
+        this.spotInstance = isSpotInstance;
         return (T) this;
     }
 
@@ -239,6 +247,10 @@ public class AzureVMTemplateFluent<T extends AzureVMTemplateFluent<T>> {
 
     public int getOsDiskSize() {
         return osDiskSize;
+    }
+
+    public boolean isSpotInstance() {
+        return spotInstance;
     }
 
     public String getNewStorageAccountName() {

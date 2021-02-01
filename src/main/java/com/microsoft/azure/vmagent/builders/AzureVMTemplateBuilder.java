@@ -28,6 +28,7 @@ public class AzureVMTemplateBuilder extends AzureVMTemplateFluent<AzureVMTemplat
         fluent.withDiskType(template.getDiskType());
         fluent.withEphemeralOSDisk(template.isEphemeralOSDisk());
         fluent.withOsDiskSize(template.getOsDiskSize());
+        fluent.withSpotInstance(template.isSpotInstance());
         fluent.withRetentionStrategy((AzureVMCloudBaseRetentionStrategy) template.getRetentionStrategy());
         fluent.withUsageMode(template.getUsageMode());
         fluent.withAdminCredential(template.getCredentialsId());
@@ -127,6 +128,7 @@ public class AzureVMTemplateBuilder extends AzureVMTemplateFluent<AzureVMTemplat
                 fluent.getAdvancedImage().isDoNotUseMachineIfInitFails(),
                 fluent.getAdvancedImage().isEnableMSI(),
                 fluent.getAdvancedImage().isEnableUAMI(),
-                fluent.getAdvancedImage().getUamiID());
+                fluent.getAdvancedImage().getUamiID(),
+                fluent.isSpotInstance());
     }
 }

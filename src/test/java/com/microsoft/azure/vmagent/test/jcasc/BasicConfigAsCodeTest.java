@@ -81,6 +81,8 @@ public class BasicConfigAsCodeTest {
         assertThat(template.isTemplateDisabled(), is(false));
         assertThat(template.getTemplateName(), is("ubuntu"));
 
+        assertThat(template.isSpotInstance(), is(false));
+
         assertThat(template.getUsageMode(), is("Use this node as much as possible"));
         assertThat(template.getUsePrivateIP(), is(false));
 
