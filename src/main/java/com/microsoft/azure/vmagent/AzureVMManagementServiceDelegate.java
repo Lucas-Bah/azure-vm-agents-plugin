@@ -98,14 +98,26 @@ public final class AzureVMManagementServiceDelegate {
 
     // Add the Spot instance template
     private static final String EMBEDDED_TEMPLATE_IMAGE_SPOT_FILENAME =
-        "/customImageTemplateSpot.json";
-    private static final String EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_SCRIPT_FILENAME =
-        "/customImageTemplateSpotWithScript.json";
-    private static final String EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_MANAGED_FILENAME =
-        "/customImageTemplateSpotWithManagedDisk.json";
-    private static final String EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_SCRIPT_MANAGED_FILENAME =
-        "/customImageTemplateSpotWithScriptAndManagedDisk.json";
-
+        "/customImageTemplateWithSpot.json";
+    private static final String EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_SPOT_FILENAME =
+        "/customImageTemplateWithScriptAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_IMAGE_WITH_MANAGED_SPOT_FILENAME =
+        "/customImageTemplateWithManagedDiskAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_MANAGED_SPOT_FILENAME =
+        "/customImageTemplateWithScriptAndManagedDiskAndSpot.json";
+    
+    private static final String EMBEDDED_TEMPLATE_SPOT_FILENAME = 
+        "/referenceImageTemplateWithSpot.json";
+    private static final String EMBEDDED_TEMPLATE_WITH_SCRIPT_SPOT_FILENAME = 
+        "/referenceImageTemplateWithScriptAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_WITH_MANAGED_SPOT_FILENAME = 
+        "/referenceImageTemplateWithManagedDiskAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_WITH_SCRIPT_MANAGED_SPOT_FILENAME =
+        "/referenceImageTemplateWithScriptAndManagedDiskAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_IMAGE_ID_WITH_MANAGED_SPOT_FILENAME =
+        "/referenceImageIDTemplateWithManagedDiskAndSpot.json";
+    private static final String EMBEDDED_TEMPLATE_IMAGE_ID_WITH_SCRIPT_MANAGED_SPOT_FILENAME =
+        "/referenceImageIDTemplateWithScriptAndManagedDiskAndSpot.json";
     private static final String VIRTUAL_NETWORK_TEMPLATE_FRAGMENT_FILENAME = "/virtualNetworkFragment.json";
 
     private static final String PUBLIC_IP_FRAGMENT_FILENAME = "/publicIPFragment.json";
@@ -261,28 +273,36 @@ public final class AzureVMManagementServiceDelegate {
             String msg;
             String templateLocation;
             boolean useCustomImage = !isBasic && referenceType == ImageReferenceType.CUSTOM;
+            // the spot insatnce test must be on customimage == false
+
             if (useCustomScriptExtension) {
                 if (useManagedDisk) {
                     msg = "AzureVMManagementServiceDelegate: createDeployment: "
                             + "Use embedded deployment template (with script and managed) {0}";
                     if (useCustomImage) {
                         templateLocation = spotInstance
-                        ? EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_SCRIPT_MANAGED_FILENAME
+                        ? EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_MANAGED_SPOT_FILENAME
                         : EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_MANAGED_FILENAME;
                     } else {
                         templateLocation = (referenceType == ImageReferenceType.CUSTOM_IMAGE
                                 || referenceType == ImageReferenceType.GALLERY)
-                                ? EMBEDDED_TEMPLATE_IMAGE_ID_WITH_SCRIPT_MANAGED_FILENAME
-                                : EMBEDDED_TEMPLATE_WITH_SCRIPT_MANAGED_FILENAME;
+                                ? spotInstance
+                                    ? EMBEDDED_TEMPLATE_IMAGE_ID_WITH_SCRIPT_MANAGED_SPOT_FILENAME
+                                    : EMBEDDED_TEMPLATE_IMAGE_ID_WITH_SCRIPT_MANAGED_FILENAME
+                                : spotInstance
+                                    ? EMBEDDED_TEMPLATE_WITH_SCRIPT_MANAGED_SPOT_FILENAME
+                                    : EMBEDDED_TEMPLATE_WITH_SCRIPT_MANAGED_FILENAME;
                     }
                 } else {
                     msg = "AzureVMManagementServiceDelegate: createDeployment: "
                             + "Use embedded deployment template (with script) {0}";
                     templateLocation = useCustomImage
                             ? spotInstance
-                                ? EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_SCRIPT_FILENAME
+                                ? EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_SPOT_FILENAME
                                 : EMBEDDED_TEMPLATE_IMAGE_WITH_SCRIPT_FILENAME
-                            : EMBEDDED_TEMPLATE_WITH_SCRIPT_FILENAME;
+                            : spotInstance
+                                ? EMBEDDED_TEMPLATE_WITH_SCRIPT_SPOT_FILENAME
+                                : EMBEDDED_TEMPLATE_WITH_SCRIPT_FILENAME;
                 }
             } else {
                 if (useManagedDisk) {
@@ -290,13 +310,17 @@ public final class AzureVMManagementServiceDelegate {
                             + "Use embedded deployment template (with managed) {0}";
                     if (useCustomImage) {
                         templateLocation = spotInstance
-                        ? EMBEDDED_TEMPLATE_IMAGE_SPOT_WITH_MANAGED_FILENAME
+                        ? EMBEDDED_TEMPLATE_IMAGE_WITH_MANAGED_SPOT_FILENAME
                         : EMBEDDED_TEMPLATE_IMAGE_WITH_MANAGED_FILENAME;
                     } else {
                         templateLocation = (referenceType == ImageReferenceType.CUSTOM_IMAGE
                                 || referenceType == ImageReferenceType.GALLERY)
-                                ? EMBEDDED_TEMPLATE_IMAGE_ID_WITH_MANAGED_FILENAME
-                                : EMBEDDED_TEMPLATE_WITH_MANAGED_FILENAME;
+                                ? spotInstance
+                                    ? EMBEDDED_TEMPLATE_IMAGE_ID_WITH_MANAGED_SPOT_FILENAME
+                                    : EMBEDDED_TEMPLATE_IMAGE_ID_WITH_MANAGED_FILENAME
+                                : spotInstance
+                                    ? EMBEDDED_TEMPLATE_WITH_MANAGED_SPOT_FILENAME
+                                    : EMBEDDED_TEMPLATE_WITH_MANAGED_FILENAME;
                     }
                 } else {
                     msg = "AzureVMManagementServiceDelegate: createDeployment: "
@@ -305,7 +329,9 @@ public final class AzureVMManagementServiceDelegate {
                             ? spotInstance
                                 ? EMBEDDED_TEMPLATE_IMAGE_SPOT_FILENAME
                                 : EMBEDDED_TEMPLATE_IMAGE_FILENAME
-                            : EMBEDDED_TEMPLATE_FILENAME;
+                            : spotInstance
+                                ? EMBEDDED_TEMPLATE_SPOT_FILENAME
+                                : EMBEDDED_TEMPLATE_FILENAME;
                 }
             }
             LOGGER.log(Level.INFO, msg, templateLocation);
