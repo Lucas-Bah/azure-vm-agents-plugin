@@ -21,7 +21,7 @@ public final class Constants {
 
     public static final String CI_SYSTEM = "jenkinsagents";
 
-    public static final String PLUGIN_NAME = "AzureJenkinsVMAgentWithSpotInstance";
+    public static final String PLUGIN_NAME = "AzureJenkinsVMAgent";
 
     public static final int DEFAULT_SSH_PORT = 22;
 
@@ -63,11 +63,11 @@ public final class Constants {
 
     public static final String DEFAULT_GRAPH_ENDPOINT = "https://graph.windows.net/";
 
-    public static final String AZURE_CLOUD_DISPLAY_NAME = "Microsoft Azure VM Agents With Spot Instance";
+    public static final String AZURE_CLOUD_DISPLAY_NAME = "Microsoft Azure VM Agents";
 
-    public static final String AZURE_VM_AGENT_CLOUD_DISPLAY_NAME = "Azure VM Agent With Spot Instance";
+    public static final String AZURE_VM_AGENT_CLOUD_DISPLAY_NAME = "Azure VM Agent";
 
-    public static final String AZURE_CLOUD_PREFIX = "AzureVMAgentsWithSpotInstance-";
+    public static final String AZURE_CLOUD_PREFIX = "AzureVMAgents-";
 
     public static final String STORAGE_ACCOUNT_PREFIX = "jenkins";
 

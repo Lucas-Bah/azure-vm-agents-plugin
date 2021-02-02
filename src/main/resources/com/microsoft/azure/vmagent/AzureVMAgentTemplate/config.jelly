@@ -4,63 +4,63 @@
     <table width="100%">
         <f:section title="${%General_Configuration}">
             <f:entry title="${%Template_Name}" field="templateName"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-templateName.html">
+                     help="/plugin/azure-vm-agents/help-templateName.html">
                 <f:textbox/>
             </f:entry>
 
             <f:entry title="${%Template_Description}" field="templateDesc"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-templateDesc.html">
+                     help="/plugin/azure-vm-agents/help-templateDesc.html">
                 <f:textbox/>
             </f:entry>
 
             <f:entry title="${%Agent_Workspace}" field="agentWorkspace"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-agentWorkspace.html">
+                     help="/plugin/azure-vm-agents/help-agentWorkspace.html">
                 <f:textbox/>
             </f:entry>
 
-            <f:entry title="${%Labels}" field="labels" help="/plugin/azure-vm-agents-with-spot-instance/help-labels.html">
+            <f:entry title="${%Labels}" field="labels" help="/plugin/azure-vm-agents/help-labels.html">
                 <f:textbox/>
             </f:entry>
 
-            <f:entry title="${%Location}" field="location" help="/plugin/azure-vm-agents-with-spot-instance/help-location.html">
+            <f:entry title="${%Location}" field="location" help="/plugin/azure-vm-agents/help-location.html">
                 <f:select/>
             </f:entry>
 
-            <ui:dropdownList title="${%Availability_Options}" selectedName="availabilityTypeValue" name="availabilityType" help="/plugin/azure-vm-agents-with-spot-instance/help-availability.html">
+            <ui:dropdownList title="${%Availability_Options}" selectedName="availabilityTypeValue" name="availabilityType" help="/plugin/azure-vm-agents/help-availability.html">
                 <f:dropdownListBlock title="${%No_Availability}" value="unknown" selected="${instance == null || instance.getAvailabilityType() == 'unknown'}">
                 </f:dropdownListBlock>
                 <f:dropdownListBlock title="${%Availability_Set}" value="availabilitySet" selected="${instance.getAvailabilitySet() != null}">
-                    <f:entry title="${%name}" field="availabilitySet" help="/plugin/azure-vm-agents-with-spot-instance/help-availabilitySet.html">
+                    <f:entry title="${%name}" field="availabilitySet" help="/plugin/azure-vm-agents/help-availabilitySet.html">
                         <f:select/>
                     </f:entry>
                 </f:dropdownListBlock>
             </ui:dropdownList>
 
             <f:entry title="${%Virtual_Machine_Size}" field="virtualMachineSize"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-virtualMachineSize.html">
+                     help="/plugin/azure-vm-agents/help-virtualMachineSize.html">
                 <f:select/>
             </f:entry>
 
             <f:entry title="${%Storage_Account_Type}" field="storageAccountType"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-storageAccountType.html">
+                     help="/plugin/azure-vm-agents/help-storageAccountType.html">
                 <f:select/>
             </f:entry>
 
             <f:entry title="${%Storage_Account_Name}">
                 <ui:radioBlock name="storageAccountNameReferenceType" value="new" title="${%Storage_Account_Create_New}" checked="${instance == null || instance.isStorageAccountNameReferenceTypeEquals('new')}" inline="true">
-                    <f:entry field="newStorageAccountName" help="/plugin/azure-vm-agents-with-spot-instance/help-storageAccountName.html">
+                    <f:entry field="newStorageAccountName" help="/plugin/azure-vm-agents/help-storageAccountName.html">
                         <f:textbox/>
                     </f:entry>
                 </ui:radioBlock>
 
                 <ui:radioBlock name="storageAccountNameReferenceType" value="existing" title="${%Storage_Account_Use_Exist}" checked="${instance.isStorageAccountNameReferenceTypeEquals('existing')}" inline="true">
-                    <f:entry field="existingStorageAccountName" help="/plugin/azure-vm-agents-with-spot-instance/help-storageAccountName.html">
+                    <f:entry field="existingStorageAccountName" help="/plugin/azure-vm-agents/help-storageAccountName.html">
                         <f:select/>
                     </f:entry>
                 </ui:radioBlock>
             </f:entry>
 
-            <f:entry title="${%Disk_Type}" field="diskType" help="/plugin/azure-vm-agents-with-spot-instance/help-diskType.html">
+            <f:entry title="${%Disk_Type}" field="diskType" help="/plugin/azure-vm-agents/help-diskType.html">
                 <f:select/>
             </f:entry>
 
@@ -68,7 +68,7 @@
                 <f:checkbox/>
             </f:entry>
 
-            <f:entry title="${%OS_Disk_Size}" field="osDiskSize" help="/plugin/azure-vm-agents-with-spot-instance/help-osDiskSize.html">
+            <f:entry title="${%OS_Disk_Size}" field="osDiskSize" help="/plugin/azure-vm-agents/help-osDiskSize.html">
                 <f:textbox/>
             </f:entry>
 
@@ -79,11 +79,11 @@
             <f:dropdownDescriptorSelector field="retentionStrategy" title="${%Retention_Strategy}" descriptors="${descriptor.azureVMRetentionStrategy}"/>
 
             <f:entry title="${%shutdownOnIdle}" field="shutdownOnIdle"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-shutdownOnIdle.html">
+                     help="/plugin/azure-vm-agents/help-shutdownOnIdle.html">
                 <f:checkbox/>
             </f:entry>
 
-            <f:entry title="${%Usage}" field="usageMode" help="/plugin/azure-vm-agents-with-spot-instance/help-slaveMode.html">
+            <f:entry title="${%Usage}" field="usageMode" help="/plugin/azure-vm-agents/help-slaveMode.html">
                 <f:select/>
             </f:entry>
         </f:section>
@@ -113,32 +113,32 @@
             <ui:radioBlock name="imageTopLevelType" value="advanced" title="${%Advanced_Image}" checked="${instance.isTopLevelType('advanced')}" inline="true">
                 <ui:dropdownList selectedName="imageReferenceTypeValue" name="imageReference">
                     <f:dropdownListBlock title="${%Custom_Image}" value="custom" selected="${instance == null || instance.isType('custom')}">
-                        <f:entry title="${%Image}" field="uri" help="/plugin/azure-vm-agents-with-spot-instance/help-image.html">
+                        <f:entry title="${%Image}" field="uri" help="/plugin/azure-vm-agents/help-image.html">
                             <f:textbox/>
                         </f:entry>
                     </f:dropdownListBlock>
 
                     <f:dropdownListBlock title="${%Custom_Managed_Image}" value="customImage" selected="${instance.isType('customImage')}">
                         <f:entry title="${%Image_Id}" field="id"
-                                 help="/plugin/azure-vm-agents-with-spot-instance/help-customReference.html">
+                                 help="/plugin/azure-vm-agents/help-customReference.html">
                             <f:textbox/>
                         </f:entry>
                     </f:dropdownListBlock>
 
                     <f:dropdownListBlock title="${%Marketplace_Image}" value="reference" selected="${instance.isType('reference')}">
                         <f:entry title="${%Image_Publisher}" field="publisher"
-                                 help="/plugin/azure-vm-agents-with-spot-instance/help-imageReference.html">
+                                 help="/plugin/azure-vm-agents/help-imageReference.html">
                             <f:textbox/>
                         </f:entry>
                         <f:entry title="${%Image_Offer}" field="offer"
-                                 help="/plugin/azure-vm-agents-with-spot-instance/help-imageReference.html">
+                                 help="/plugin/azure-vm-agents/help-imageReference.html">
                             <f:textbox/>
                         </f:entry>
-                        <f:entry title="${%Image_Sku}" field="sku" help="/plugin/azure-vm-agents-with-spot-instance/help-imageReference.html">
+                        <f:entry title="${%Image_Sku}" field="sku" help="/plugin/azure-vm-agents/help-imageReference.html">
                             <f:textbox/>
                         </f:entry>
                         <f:entry title="${%Image_Version}" field="version"
-                                 help="/plugin/azure-vm-agents-with-spot-instance/help-imageReference.html">
+                                 help="/plugin/azure-vm-agents/help-imageReference.html">
                             <f:textbox default="latest"/>
                         </f:entry>
                     </f:dropdownListBlock>
@@ -162,41 +162,41 @@
                     </f:dropdownListBlock>
                 </ui:dropdownList>
 
-                <f:entry title="${%Os_Type}" field="osType" help="/plugin/azure-vm-agents-with-spot-instance/help-osType.html">
+                <f:entry title="${%Os_Type}" field="osType" help="/plugin/azure-vm-agents/help-osType.html">
                     <f:select/>
                 </f:entry>
 
                 <f:entry title="${%Launch_Method}" field="agentLaunchMethod"
-                         help="/plugin/azure-vm-agents-with-spot-instance/help-agentLaunchMethod.html">
+                         help="/plugin/azure-vm-agents/help-agentLaunchMethod.html">
                     <f:select/>
                 </f:entry>
 
                 <f:entry title="${%Pre_Install_Ssh}" field="preInstallSsh"
-                         help="/plugin/azure-vm-agents-with-spot-instance/help-preInstallSsh.html">
+                         help="/plugin/azure-vm-agents/help-preInstallSsh.html">
                     <f:checkbox default="true"/>
                 </f:entry>
 
                 <f:section title="${%Initialization_Configuration}">
-                    <f:entry title="${%Init_Script}" field="initScript" help="/plugin/azure-vm-agents-with-spot-instance/help-initScript.html">
+                    <f:entry title="${%Init_Script}" field="initScript" help="/plugin/azure-vm-agents/help-initScript.html">
                         <f:textarea/>
                     </f:entry>
 
                     <f:entry title="${%Execute_Init_Script_As_Root}" field="executeInitScriptAsRoot"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-executeInitScriptAsRoot.html">
+                             help="/plugin/azure-vm-agents/help-executeInitScriptAsRoot.html">
                         <f:checkbox default="true"/>
                     </f:entry>
 
                     <f:entry title="${%Do_Not_Use_Machine_If_Init_Fails}" field="doNotUseMachineIfInitFails"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-doNotUseMachineIfInitFails.html">
+                             help="/plugin/azure-vm-agents/help-doNotUseMachineIfInitFails.html">
                         <f:checkbox default="true"/>
                     </f:entry>
                     
-                    <f:entry title="${%Terminate_Script}" field="terminateScript" help="/plugin/azure-vm-agents-with-spot-instance/help-terminateScript.html">
+                    <f:entry title="${%Terminate_Script}" field="terminateScript" help="/plugin/azure-vm-agents/help-terminateScript.html">
                         <f:textarea/>
                     </f:entry>
 
                     <f:entry title="${%Enable_MSI}" field="enableMSI"
-                        help="/plugin/azure-vm-agents-with-spot-instance/help-enableMSI.html">
+                        help="/plugin/azure-vm-agents/help-enableMSI.html">
                         <f:checkbox/>
                     </f:entry>
 
@@ -212,48 +212,48 @@
 
                 <f:advanced>
                     <f:entry title="${%VirtualNetwork_Name}" field="virtualNetworkName"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-virtualNetworkName.html">
+                             help="/plugin/azure-vm-agents/help-virtualNetworkName.html">
                         <f:textbox/>
                     </f:entry>
 
                     <f:entry title="${%VirtualNetworkResourceGroup_Name}" field="virtualNetworkResourceGroupName"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-virtualNetworkResourceGroupName.html">
+                             help="/plugin/azure-vm-agents/help-virtualNetworkResourceGroupName.html">
                         <f:textbox/>
                     </f:entry>
 
-                    <f:entry title="${%Subnet_Name}" field="subnetName" help="/plugin/azure-vm-agents-with-spot-instance/help-subnetName.html">
+                    <f:entry title="${%Subnet_Name}" field="subnetName" help="/plugin/azure-vm-agents/help-subnetName.html">
                         <f:textbox/>
                     </f:entry>
 
                     <f:entry title="${%Use_Private_Ip}" field="usePrivateIP"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-agentPrivateIp.html">
+                             help="/plugin/azure-vm-agents/help-agentPrivateIp.html">
                         <f:checkbox default="false"/>
                     </f:entry>
 
-                    <f:entry title="${%NSG_Name}" field="nsgName" help="/plugin/azure-vm-agents-with-spot-instance/help-nsgName.html">
+                    <f:entry title="${%NSG_Name}" field="nsgName" help="/plugin/azure-vm-agents/help-nsgName.html">
                         <f:textbox/>
                     </f:entry>
 
-                    <f:entry title="${%Java path}" field="javaPath" help="/plugin/azure-vm-agents-with-spot-instance/help-javaPath.html">
+                    <f:entry title="${%Java path}" field="javaPath" help="/plugin/azure-vm-agents/help-javaPath.html">
                         <f:textbox default="java" />
                     </f:entry>
 
-                    <f:entry title="${%JVM_Options}" field="jvmOptions" help="/plugin/azure-vm-agents-with-spot-instance/help-jvmOptions.html">
+                    <f:entry title="${%JVM_Options}" field="jvmOptions" help="/plugin/azure-vm-agents/help-jvmOptions.html">
                         <f:textbox/>
                     </f:entry>
 
                     <f:entry title="${%noOfParallelJobs}" field="noOfParallelJobs"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-noOfParallelJobs.html">
+                             help="/plugin/azure-vm-agents/help-noOfParallelJobs.html">
                         <f:textbox default="${descriptor.getDefaultNoOfExecutors()}"/>
                     </f:entry>
 
                     <f:entry title="${%Template_Is_Disabled}" field="templateDisabled"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-templateDisabled.html">
+                             help="/plugin/azure-vm-agents/help-templateDisabled.html">
                         <f:checkbox/>
                     </f:entry>
 
                     <f:entry title="${%Template_Status_Details}" field="templateStatusDetails"
-                             help="/plugin/azure-vm-agents-with-spot-instance/help-templateStatusDetails.html">
+                             help="/plugin/azure-vm-agents/help-templateStatusDetails.html">
                         <f:textarea/>
                     </f:entry>
                 </f:advanced>
@@ -262,7 +262,7 @@
 
         <f:section title="${%Admin_Credentials}">
             <f:entry title="${%Admin_Credentials}" field="credentialsId"
-                     help="/plugin/azure-vm-agents-with-spot-instance/help-credentials.html">
+                     help="/plugin/azure-vm-agents/help-credentials.html">
                 <c:select expressionAllowed="false"/>
             </f:entry>
         </f:section>

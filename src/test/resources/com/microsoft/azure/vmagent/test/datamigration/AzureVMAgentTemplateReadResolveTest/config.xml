@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson>
     <clouds>
-        <com.microsoft.azure.vmagent.AzureVMCloud plugin="azure-vm-agents-with-spot-instance@0.9.0">
+        <com.microsoft.azure.vmagent.AzureVMCloud plugin="azure-vm-agents@0.9.0">
             <name>myAzure</name>
             <cloudName>myAzure</cloudName>
             <credentialsId>azure</credentialsId>
