@@ -1373,7 +1373,11 @@ public class AzureVMAgentTemplate implements Describable<AzureVMAgentTemplate>, 
             model.add(SkuName.STANDARD_LRS.toString());
 
             /*As introduced in Azure Docs, the size contains 'S' supports premium storage*/
-            if (virtualMachineSize.matches(".*_[a-zA-Z]([0-9]+[Mm]?[Ss]|[Ss][0-9]+).*")) {
+            // 02-APR-2021, MGT, CDE-5441, use another regex to provide premium with all size containing 'S' or 's'
+            //String regex = ".*_[a-zA-Z]([0-9]+[Mm]?[Ss]|[Ss][0-9]+).*";
+            String regex = "(.*)_(.*)[Ss](.*)";
+            if (virtualMachineSize.matches(regex)) {
+            // 02-APR-2021, MGT, CDE-5441
                 model.add(SkuName.PREMIUM_LRS.toString());
             }
             return model;
